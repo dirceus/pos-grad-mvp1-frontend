@@ -1,0 +1,104 @@
+<div class="container">
+  <div class="mat-elevation-z8"> 
+  <mat-expansion-panel [expanded] = "true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Filtro
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+    
+        <mat-form-field>
+          <mat-label>Tipo</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let tipo of tipos" [value]="tipo.valor">
+              {{tipo.descricao}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+    
+        <mat-form-field>
+          <mat-label>Disciplina</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let disciplina of disciplinas" [value]="disciplina.valor">
+              {{disciplina.descricao}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Ano</mat-label>
+          <input matInput type="number" min="2000">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Instituicao</mat-label>
+          <mat-select>
+            <mat-option [value]="1">
+              MEC
+            </mat-option>
+            <mat-option [value]="2">
+              PUC-MG
+            </mat-option>
+            <mat-option [value]="3">
+              PUC-RIO
+            </mat-option>
+            <mat-option [value]="4">
+              PUC-RS
+            </mat-option>
+            <mat-option [value]="5">
+              PUC-SP
+            </mat-option>
+            <mat-option [value]="6">
+              UERJ
+            </mat-option>
+            <mat-option [value]="7">
+              UFAL
+            </mat-option>
+            <mat-option [value]="8">
+              UFBA
+            </mat-option>
+            <mat-option [value]="9">
+              UFCE
+            </mat-option>
+            <mat-option [value]="10">
+              UFMG
+            </mat-option>
+            <mat-option [value]="11">
+              UFPE
+            </mat-option>
+            <mat-option [value]="12">
+              USP
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Evento</mat-label>
+          <mat-select>
+            <mat-option [value]="1">
+              Avaliação 2023-S1A1 - Pós-Graduação Eng. Sw.
+            </mat-option>
+            <mat-option [value]="2">
+              Avaliação 2023-S1A2 - Pós-Graduação Eng. Sw.
+            </mat-option>
+            <mat-option [value]="3">
+              Avaliação 2023-S1-FINAL - Pós-Graduação Eng. Sw.
+            </mat-option>
+            <mat-option [value]="4">
+              Avaliação 2023-S2A1 - Pós-Graduação Eng. Sw.
+            </mat-option>
+            <mat-option [value]="5">
+              Avaliação 2023-S2A2 - Pós-Graduação Eng. Sw.
+            </mat-option>
+            <mat-option [value]="6">
+              Avaliação 2023-S2-FINAL - Pós-Graduação Eng. Sw.
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+
+        <mat-action-row>
+          <button mat-raised-button color="primary"><mat-icon>search</mat-icon> Pesquisar</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+</div>  
+</div>

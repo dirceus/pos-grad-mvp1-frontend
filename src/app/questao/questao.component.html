@@ -1,0 +1,20 @@
+<div class="actions">
+
+    <button mat-fab extended color="primary" [hidden]="!showListagem" (click)="irCadastro()">
+      <mat-icon>add</mat-icon>
+      Adicionar Questão
+    </button>
+    <button mat-fab extended color="primary" [hidden]="showListagem" (click)="irListagem()">
+      <mat-icon>list</mat-icon>
+      Ir para listagem
+    </button>
+ 
+ </div>
+
+<app-filtro *ngIf="showFiltro"></app-filtro>
+
+<app-listagem *ngIf="showListagem" (irDetalhesEvent)="irDetalhes($event)"></app-listagem>
+
+<app-cadastro *ngIf="showCadastro"></app-cadastro>
+
+<app-detalhes *ngIf="showDetalhes"></app-detalhes>
