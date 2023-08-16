@@ -1,13 +1,32 @@
-export interface QuestaoSimplificada {
-    codigo: number;
-    tipo: TipoQuestaoEnum;
-    ano: number;
-    instituicao: string;
-    enunciado: string;
-    evento: string;
-  }
+export class QuestaoSimplificada {
+  codigo: number
+  tipo: string;
+  disciplina: string;
+  ano: number;
+  instituicao: string;
+  evento: string;
+  enunciado: string;
+}
 
-  export enum TipoQuestaoEnum {
+export class CadastroQuestaoRequest{
+  tipo: string;
+  disciplina: string;
+  ano: number;
+  instituicao: string;
+  evento: string;
+  enunciado: string;
+}
+
+export class FiltroQuestaoRequest{
+  tipo: string;
+  disciplina: string;
+  ano: number;
+  instituicao: string;
+  evento: string;
+  enunciado: string;
+}
+
+export enum TipoQuestaoEnum {
     MULTIPLA_ESCOLHA = "Múltipla Escolha",
-    VERDADEIRO_FALSO = "Verdadeiro ou Falso",
-  }
+    VERDADEIRO_OU_FALSO = "Verdadeiro ou Falso",
+}

@@ -23,6 +23,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {FormsModule} from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatListModule} from '@angular/material/list';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import {MatListModule} from '@angular/material/list';
     MatSelectModule,
     FormsModule,
     MatCheckboxModule,
-    MatListModule
+    MatListModule,
+    HttpClientModule
     
   ],
   providers: [],
