@@ -1,120 +1,132 @@
+<notifier-container></notifier-container>
 <div class="container">
     <div class="mat-elevation-z8">
-    <mat-card>
-        
-        <mat-card-content>
-            <h1> Cadastro de Questão </h1>
-            <mat-divider></mat-divider>
-        <br/>
-        <p>
-            <mat-form-field style="width: 32%;">
-                <mat-label>Tipo</mat-label>
-                <mat-select required>
-                    <mat-option value="one">First option</mat-option>
-                    <mat-option value="two">Second option</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field style="width: 32%;">
-                <mat-label>Disciplina</mat-label>
-                <mat-select required>
-                    <mat-option value="one">First option</mat-option>
-                    <mat-option value="two">Second option</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field style="width: 32%">
-                <mat-label>Assuntos</mat-label>
-                <mat-select>
-                    <mat-option value="one">First option</mat-option>
-                    <mat-option value="two">Second option</mat-option>
-                </mat-select>
-            </mat-form-field>
-        </p>
+        <mat-card>
 
-        <p>
-            <mat-form-field style="width: 32%;">
-                <mat-label>Ano</mat-label>
-                <input matInput required>
-            </mat-form-field>
-            <mat-form-field style="width: 32%;">
-                <mat-label>Instituição</mat-label>
-                <input matInput required>
-            </mat-form-field>
-            <mat-form-field style="width: 32%;">
-                <mat-label>Evento</mat-label>
-                <input matInput>
-            </mat-form-field>
-        </p>
+            <mat-card-content>
+                <h1> Nova Questão </h1>
+                <mat-divider></mat-divider>
+                <br />
+                <p>
+                    <mat-form-field style="width: 32%">
+                        <mat-label>Tipo</mat-label>
+                        <mat-select [(ngModel)]="questao.tipo" required>
+                            <mat-option *ngFor="let tipo of tipos" [value]="tipo.descricao">
+                                {{tipo.descricao}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field style="width: 32%;">
+                        <mat-label>Disciplina</mat-label>
+                        <mat-select #disciplinaSelect [(ngModel)]="questao.disciplina" required
+                        (ngModelChange)="atualizarAssuntos($event)">
+                            <mat-option *ngFor="let disciplina of disciplinas" [value]="disciplina.descricao">
+                                {{disciplina.descricao}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field style="width: 32%">
+                        <mat-label>Assuntos</mat-label>
+                        <mat-select [(ngModel)]="questao.assuntos" multiple>
+                            <mat-option *ngFor="let assunto of assuntos" [value]="assunto.codigo">
+                                {{assunto.descricao}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </p>
 
-        <p>
-            <mat-form-field style="width: 100%;">
-                <mat-label>Enunciado</mat-label>
-                <textarea matInput required></textarea>
-            </mat-form-field>
-        </p>
+                <p>
+                    <mat-form-field style="width: 24%;">
+                        <mat-label>Ano</mat-label>
+                        <input matInput required [(ngModel)]="questao.ano">
+                    </mat-form-field>
+                    <mat-form-field style="width: 24%;">
+                        <mat-label>Instituição</mat-label>
+                        <input matInput required [(ngModel)]="questao.instituicao">
+                    </mat-form-field>
+                    <mat-form-field style="width: 24%">
+                        <mat-label>Origem</mat-label>
+                        <mat-select [(ngModel)]="questao.origem" required>
+                            <mat-option *ngFor="let origem of origens" [value]="origem.descricao">
+                                {{origem.descricao}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field style="width: 24%;">
+                        <mat-label>Origem Descrição</mat-label>
+                        <input matInput [(ngModel)]="questao.origem_descricao">
+                    </mat-form-field>
+                </p>
 
-        
-        <table style="width: 100%;">
-            <thead>
-                <tr>
-                    <th>Opção<br />Correta?</th>
-                    <th>Alternativas</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td style="width: 20px;"><mat-checkbox></mat-checkbox></td>
-                    <td>
-                        <mat-form-field style="width: 100%;">
-                            <mat-label>Alternativa 1</mat-label>
-                            <input matInput required>
-                        </mat-form-field>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width: 20px;"><mat-checkbox></mat-checkbox></td>
-                    <td>
-                        <mat-form-field style="width: 100%;">
-                            <mat-label>Alternativa 2</mat-label>
-                            <input matInput required>
-                        </mat-form-field>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width: 20px;"><mat-checkbox></mat-checkbox></td>
-                    <td>
-                        <mat-form-field style="width: 100%;">
-                            <mat-label>Alternativa 3</mat-label>
-                            <input matInput required>
-                        </mat-form-field>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width: 20px;"><mat-checkbox></mat-checkbox></td>
-                    <td>
-                        <mat-form-field style="width: 100%;">
-                            <mat-label>Alternativa 4</mat-label>
-                            <input matInput>
-                        </mat-form-field>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width: 20px;"><mat-checkbox></mat-checkbox></td>
-                    <td>
-                        <mat-form-field style="width: 100%;">
-                            <mat-label>Alternativa 5</mat-label>
-                            <input matInput>
-                        </mat-form-field>
-                    </td>
-                </tr>
-            </tbody>
+                <p>
+                    <mat-form-field style="width: 100%;">
+                        <mat-label>Enunciado</mat-label>
+                        <textarea matInput required [(ngModel)]="questao.enunciado"></textarea>
+                    </mat-form-field>
+                </p>
 
-        </table>
-        </mat-card-content>
-        <mat-action-row>
-            <button mat-raised-button color="primary">Salvar</button>
-          </mat-action-row>
 
-    </mat-card>
-</div>
+                <table style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>Opção<br />Correta?</th>
+                            <th>Alternativas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="width: 20px;"><mat-checkbox [(ngModel)]="alternativa_1.is_correta"></mat-checkbox></td>
+                            <td>
+                                <mat-form-field style="width: 100%;">
+                                    <mat-label>Alternativa 1</mat-label>
+                                    <input matInput required [(ngModel)]="alternativa_1.descricao">
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20px;"><mat-checkbox [(ngModel)]="alternativa_2.is_correta"></mat-checkbox></td>
+                            <td>
+                                <mat-form-field style="width: 100%;">
+                                    <mat-label>Alternativa 2</mat-label>
+                                    <input matInput required [(ngModel)]="alternativa_2.descricao">
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20px;"><mat-checkbox [(ngModel)]="alternativa_3.is_correta"></mat-checkbox></td>
+                            <td>
+                                <mat-form-field style="width: 100%;">
+                                    <mat-label>Alternativa 3</mat-label>
+                                    <input matInput required [(ngModel)]="alternativa_3.descricao">
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20px;"><mat-checkbox [(ngModel)]="alternativa_4.is_correta"></mat-checkbox></td>
+                            <td>
+                                <mat-form-field style="width: 100%;">
+                                    <mat-label>Alternativa 4</mat-label>
+                                    <input matInput [(ngModel)]="alternativa_4.descricao">
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20px;"><mat-checkbox [(ngModel)]="alternativa_5.is_correta"></mat-checkbox></td>
+                            <td>
+                                <mat-form-field style="width: 100%;">
+                                    <mat-label>Alternativa 5</mat-label>
+                                    <input matInput [(ngModel)]="alternativa_5.descricao">
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                    </tbody>
 
+                </table>
+            </mat-card-content>
+            <mat-action-row>
+                <button mat-raised-button color="primary" (click)="salvar()">Salvar</button>
+            </mat-action-row>
+            
+        </mat-card>
+    </div>
 </div>

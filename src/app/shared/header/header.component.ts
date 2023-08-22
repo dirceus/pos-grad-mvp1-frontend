@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+
+  irParaGithub(){
+    window.location.href="https://github.com/dirceus/pos-grad-mvp1-frontend";
+  }
+
+  irParaSwagger(){
+    window.location.href="http://localhost:5000";
+  }
+
 }
