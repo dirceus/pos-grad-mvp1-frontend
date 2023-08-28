@@ -2,7 +2,9 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { Disciplina, FiltroQuestaoRequest, OrigemQuestao, TipoQuestao } from '../questao.model';
 import { QuestaoService } from '../questao.service';
 
-
+/**
+ * @title Componente de filtragem da listagem de questões
+ */
 @Component({
   selector: 'app-filtro',
   templateUrl: './filtro.component.html',

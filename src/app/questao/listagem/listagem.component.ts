@@ -4,10 +4,10 @@ import { MatTableDataSource } from '@angular/material/table';
 import { QuestaoService } from '../questao.service';
 import { FiltroQuestaoRequest, QuestaoSimplificada } from '../questao.model';
 import { NotifierService } from 'angular-notifier';
-import { share, switchMap } from 'rxjs';
+import { Subscription, share, switchMap, take } from 'rxjs';
 
 /**
- * @title Table with pagination
+ * @title Listagem de questões com paginação
  */
 @Component({
   selector: 'app-listagem',
@@ -23,7 +23,7 @@ export class ListagemComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ultimoFiltro : FiltroQuestaoRequest = new FiltroQuestaoRequest()
-
+  subscription: Subscription;
 
   private notifier: NotifierService;
 
@@ -46,7 +46,7 @@ export class ListagemComponent implements OnInit, AfterViewInit {
 
   obterQuestoes() {
     this.questaoService.obterTodos()
-    .pipe(share())
+    .pipe(take(1))
     .subscribe({
       next: (questoes) => {
         this.dataSource.data = questoes;
@@ -62,8 +62,13 @@ export class ListagemComponent implements OnInit, AfterViewInit {
     if(filtro){
       this.ultimoFiltro = filtro
     }
-    this.questaoService.obterPorFiltro(this.ultimoFiltro)
-    .pipe(share())
+
+    if(this.subscription){
+      this.subscription.unsubscribe
+    }
+
+    this.subscription = this.questaoService.obterPorFiltro(this.ultimoFiltro)
+    .pipe(take(1))
     .subscribe({
       next: (questoes) => {
 
@@ -77,8 +82,6 @@ export class ListagemComponent implements OnInit, AfterViewInit {
       console.error("Erro ao pesquisar questões"+e.message)
       this.notifier.notify('error', 'Ocorreu um erro ao pesquisar questões');
     }})
-
-
   }
 
 
