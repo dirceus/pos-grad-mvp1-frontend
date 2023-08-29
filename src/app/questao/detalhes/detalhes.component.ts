@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { QuestaoService } from '../questao.service';
 import { QuestaoCompleta } from '../questao.model';
 
@@ -7,7 +7,7 @@ import { QuestaoCompleta } from '../questao.model';
   templateUrl: './detalhes.component.html',
   styleUrls: ['./detalhes.component.css']
 })
-export class DetalhesComponent  implements OnInit {
+export class DetalhesComponent  implements OnInit, AfterViewInit {
 
   @Input() codigo: number;
   questao: QuestaoCompleta; 
@@ -15,8 +15,12 @@ export class DetalhesComponent  implements OnInit {
 
   constructor(private questaoService: QuestaoService){}
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.obterQuestao(this.codigo);
+  }
+
+  ngOnInit(): void {
+    
   }
 
 

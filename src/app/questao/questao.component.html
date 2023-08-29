@@ -17,4 +17,4 @@
 
 <app-cadastro [hidden]="!showCadastro"></app-cadastro>
 
-<app-detalhes [hidden]="!showDetalhes" [codigo]="codigoQuestaoSelecionada" ></app-detalhes>
+<app-detalhes *ngIf="showDetalhes" [codigo]="codigoQuestaoSelecionada" ></app-detalhes>
