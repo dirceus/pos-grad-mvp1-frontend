@@ -28,6 +28,13 @@ export class QuestaoService {
         return this.http.get<QuestaoSimplificada[]>(`${baseUrl}/listar`).pipe(share());
     }
 
+    obterDisciplina(enunciado: string): Observable<any> {
+        let params = new HttpParams();
+        params = params.append("enunciado", enunciado);
+        return this.http.get<any>(`${baseUrl}/predicao_disciplina`, { params:params} ).pipe(share());
+    }
+
+
     obterPorFiltro(filtro: FiltroQuestaoRequest): Observable<QuestaoSimplificada[]> {
         let params = new HttpParams();
         params = (filtro.tipo)          ? params.append("tipo", filtro.tipo)                : params;

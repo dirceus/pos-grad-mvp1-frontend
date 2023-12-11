@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 
 import { NotifierService } from 'angular-notifier';
 import { QuestaoService } from './questao.service';
-import { switchMap } from 'rxjs';
 
 
 @Component({

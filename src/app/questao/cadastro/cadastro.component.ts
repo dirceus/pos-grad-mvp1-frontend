@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AlternativaRequest, Assunto, CadastroQuestaoRequest, Disciplina, OrigemQuestao, TipoQuestao } from '../questao.model';
 import { QuestaoService } from '../questao.service';
 import { NotifierService } from 'angular-notifier';
-import { share, switchMap } from 'rxjs';
+import { share, switchMap, take } from 'rxjs';
 
 @Component({
   selector: 'app-cadastro',
@@ -44,6 +44,18 @@ export class CadastroComponent {
       error: (e) => console.error(e)
     })
   }
+
+  obterDisciplina(){
+    this.questaoService.obterDisciplina(this.questao.enunciado).pipe(share())
+    .subscribe({
+      next: (discplina) => {
+          this.questao.disciplina = discplina._value_
+          this.atualizarAssuntos(discplina._value_)
+      },
+      error: (e) => console.error(e)
+    })
+  }
+
 
   salvar(){
     

@@ -8,15 +8,17 @@
                 <mat-divider></mat-divider>
                 <br />
                 <p>
-                    <mat-form-field style="width: 32%">
-                        <mat-label>Tipo</mat-label>
-                        <mat-select [(ngModel)]="questao.tipo" required>
-                            <mat-option *ngFor="let tipo of tipos" [value]="tipo.descricao">
-                                {{tipo.descricao}}
-                            </mat-option>
-                        </mat-select>
+                    <mat-form-field style="width: 100%;">
+                        <mat-label>Enunciado</mat-label>
+                        <textarea matInput required [(ngModel)]="questao.enunciado"></textarea>
                     </mat-form-field>
-                    <mat-form-field style="width: 32%;">
+                </p>
+
+                <p> 
+                    <button style="width: 24%; margin-right: 10px;" mat-raised-button color="accent" (click)="obterDisciplina()">Sugerir disciplina: 
+
+                    </button>
+                    <mat-form-field style="width: 24%;">
                         <mat-label>Disciplina</mat-label>
                         <mat-select #disciplinaSelect [(ngModel)]="questao.disciplina" required
                         (ngModelChange)="atualizarAssuntos($event)">
@@ -24,12 +26,21 @@
                                 {{disciplina.descricao}}
                             </mat-option>
                         </mat-select>
+                        
                     </mat-form-field>
-                    <mat-form-field style="width: 32%">
+                    <mat-form-field style="width: 24%">
                         <mat-label>Assuntos</mat-label>
                         <mat-select [(ngModel)]="questao.assuntos" multiple>
                             <mat-option *ngFor="let assunto of assuntos" [value]="assunto.codigo">
                                 {{assunto.descricao}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field style="width: 24%">
+                        <mat-label>Tipo</mat-label>
+                        <mat-select [(ngModel)]="questao.tipo" required>
+                            <mat-option *ngFor="let tipo of tipos" [value]="tipo.descricao">
+                                {{tipo.descricao}}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
@@ -58,12 +69,7 @@
                     </mat-form-field>
                 </p>
 
-                <p>
-                    <mat-form-field style="width: 100%;">
-                        <mat-label>Enunciado</mat-label>
-                        <textarea matInput required [(ngModel)]="questao.enunciado"></textarea>
-                    </mat-form-field>
-                </p>
+                
 
 
                 <table style="width: 100%;">

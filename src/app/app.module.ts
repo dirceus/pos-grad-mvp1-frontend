@@ -9,37 +9,39 @@ import { CadastroComponent } from './questao/cadastro/cadastro.component';
 import { DetalhesComponent } from './questao/detalhes/detalhes.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule } from '@angular/material/toolbar'; 
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
-import {MatCardModule} from '@angular/material/card';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { FiltroComponent } from './questao/filtro/filtro.component';
-import {MatSelectModule} from '@angular/material/select';
-import {FormsModule} from '@angular/forms';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatListModule} from '@angular/material/list';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatListModule } from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
 import { NotifierModule, NotifierOptions } from 'angular-notifier';
-import {MatChipsModule} from '@angular/material/chips';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatMenuModule } from '@angular/material/menu';
+import { HomeComponent } from './home/home.component';
 
 
 const customNotifierOptions: NotifierOptions = {
   position: {
-		horizontal: {
-			position: 'right',
-			distance: 20
-		},
-		vertical: {
-			position: 'bottom',
-			distance: 20,
-			gap: 10
-		}
-	},
+    horizontal: {
+      position: 'right',
+      distance: 20
+    },
+    vertical: {
+      position: 'bottom',
+      distance: 20,
+      gap: 10
+    }
+  },
   theme: 'material',
   behaviour: {
     autoHide: 5000,
@@ -78,7 +80,8 @@ const customNotifierOptions: NotifierOptions = {
     CadastroComponent,
     DetalhesComponent,
     HeaderComponent,
-    FiltroComponent
+    FiltroComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -91,6 +94,7 @@ const customNotifierOptions: NotifierOptions = {
     MatPaginatorModule,
     MatCardModule,
     MatInputModule,
+    MatMenuModule,
     MatFormFieldModule,
     MatExpansionModule,
     MatSelectModule,
@@ -105,3 +109,4 @@ const customNotifierOptions: NotifierOptions = {
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
